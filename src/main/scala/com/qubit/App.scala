@@ -1,11 +1,11 @@
-package com.damianhelme
+package com.qubit
 
 /**
  */
 object App {
-  
+
   def main(args : Array[String]) {
     println( "Hello World!" )
   }
-  
+
 }
