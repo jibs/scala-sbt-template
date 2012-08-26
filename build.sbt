@@ -1,3 +1,6 @@
+import AssemblyKeys._ // put this at the top of the file
+import sbtassembly.Plugin._
+
 // set the name of the project
 name := "Scala SBT Template"
 
@@ -9,11 +12,15 @@ organization := "com.qubit"
 
 mainClass := Some("com.qubit.App")
 
+// Assembly plugin settings
+assemblySettings
+
 libraryDependencies ++= {
   	Seq(
 		    "org.specs2" %% "specs2" % "1.12" % "test",
     		"org.scalatest" %% "scalatest" % "1.7.1" % "test",
-    		"org.scala-lang" % "scala-compiler" % "2.9.2"
+    		"org.scala-lang" % "scala-compiler" % "2.9.2",
+         "org.slf4j" % "slf4j-simple" % "1.6.4"
   	)
 }
 
@@ -22,21 +29,12 @@ scalacOptions ++= Seq("-unchecked", "-deprecation")
 resolvers ++= Seq("snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
                     "releases"  at "http://oss.sonatype.org/content/repositories/releases")
 
-// https://groups.google.com/forum/?hl=en#!activity/liftweb/Um5ghzYMDUoJ/liftweb/DDTzzxRbCNU/qEo0lIbTv4kJ
-// needed for javaMail 1.4.4
+resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
+
 resolvers += "Java.net Maven2 Repo" at "http://download.java.net/maven/2/"
-
-// reduce the maximum number of errors shown by the Scala compiler
-// maxErrors := 20
-
-// increase the time between polling for file changes when using continuous execution
-// pollInterval := 1000
 
 // append several options to the list of options passed to the Java compiler
 // javacOptions ++= Seq("-source", "1.5", "-target", "1.5")
-
-// append -deprecation to the options passed to the Scala compiler
-// scalacOptions += "-deprecation"
 
 // define the statements initially evaluated when entering 'console', 'console-quick', or 'console-project'
 // initialCommands := """
